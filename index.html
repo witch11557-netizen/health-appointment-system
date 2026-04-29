@@ -1,83 +1,94 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Health Appointment System</title>
+<title>Health Appointment System</title>
 
-    <style>
-    body {
-        font-family: 'Segoe UI', sans-serif;
-        margin: 0;
-        background: #f4f7fb;
-    }
+<style>
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background: #eef3f8;
+}
 
-    header {
-        background: linear-gradient(135deg, #0077b6, #00b4d8);
-        color: white;
-        padding: 20px;
-        text-align: center;
-        font-size: 22px;
-    }
+header {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 22px;
+}
 
-    nav {
-        background: #222;
-        padding: 12px;
-        text-align: center;
-    }
+nav {
+    background: #1f2937;
+    padding: 12px;
+    text-align: center;
+}
 
-    nav a {
-        color: white;
-        margin: 15px;
-        text-decoration: none;
-        font-weight: bold;
-        cursor: pointer;
-    }
+nav a {
+    color: white;
+    margin: 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
 
-    .container {
-        padding: 20px;
-    }
+.container {
+    padding: 20px;
+}
 
-    .card {
-        background: white;
-        padding: 20px;
-        margin: 15px 0;
-        border-radius: 12px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
+/* Cards */
+.card {
+    background: white;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
 
-    input, select {
-        padding: 10px;
-        width: 100%;
-        margin-top: 8px;
-        border-radius: 8px;
-        border: 1px solid #ccc;
-    }
+/* Doctor Cards */
+.doctor-card {
+    background: linear-gradient(135deg, #89f7fe, #66a6ff);
+    color: white;
+    padding: 15px;
+    border-radius: 12px;
+    margin-top: 10px;
+}
 
-    button {
-        margin-top: 12px;
-        padding: 12px;
-        background: #0077b6;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: bold;
-    }
+/* Inputs */
+input, select {
+    padding: 10px;
+    width: 100%;
+    margin-top: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
 
-    button:hover {
-        background: #023e8a;
-    }
+/* Button */
+button {
+    margin-top: 12px;
+    padding: 12px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
 
-    #dashboard, #appointment, #doctors {
-        display: none;
-    }
-    </style>
+button:hover {
+    opacity: 0.9;
+}
+
+#dashboard, #appointment, #doctors {
+    display: none;
+}
+</style>
 
 </head>
 
 <body>
 
 <header>
-    <h1>Online Health Appointment System</h1>
+    <h1>🏥 Health Appointment System</h1>
 </header>
 
 <nav id="menu" style="display:none;">
@@ -89,78 +100,78 @@
 
 <div class="container">
 
-    <!-- LOGIN -->
-    <div id="login">
-        <div class="card">
-            <h2>Login</h2>
-            <input type="text" id="username" placeholder="Enter Username">
-            <button onclick="login()">Login</button>
-            <p id="loginMsg"></p>
-        </div>
+<!-- LOGIN -->
+<div id="login">
+    <div class="card">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Enter Username">
+        <button onclick="login()">Login</button>
+        <p id="loginMsg"></p>
+    </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard">
+    <div class="card">
+        <h2>Welcome <span id="user"></span> 👋</h2>
+        <p>Book appointments quickly and easily.</p>
     </div>
 
-    <!-- DASHBOARD -->
-    <div id="dashboard">
-        <div class="card">
-            <h2>Welcome <span id="user"></span></h2>
-            <p>You can book appointments easily.</p>
-        </div>
-
-        <div class="card">
-            <h3>Your Appointments</h3>
-            <ul id="appointmentsList"></ul>
-        </div>
+    <div class="card">
+        <h3>📅 Your Appointments</h3>
+        <ul id="appointmentsList"></ul>
     </div>
+</div>
 
-    <!-- DOCTORS -->
-    <div id="doctors">
-        <div class="card">
-            <h2>Doctors</h2>
+<!-- DOCTORS -->
+<div id="doctors">
+    <div class="card">
+        <h2>Available Doctors</h2>
 
-            <div class="card">
-                <h3>👨‍⚕️ Dr. Ravi</h3>
-                <p>Specialization: Cardiologist</p>
-            </div>
-
-            <div class="card">
-                <h3>👩‍⚕️ Dr. Sneha</h3>
-                <p>Specialization: Dermatologist</p>
-            </div>
-
-            <div class="card">
-                <h3>👨‍⚕️ Dr. Kumar</h3>
-                <p>Specialization: General Physician</p>
-            </div>
-
+        <div class="doctor-card">
+            <h3>👨‍⚕️ Dr. Ravi</h3>
+            <p>Cardiologist ❤️</p>
         </div>
-    </div>
 
-    <!-- APPOINTMENT -->
-    <div id="appointment">
-        <div class="card">
-            <h2>Book Appointment</h2>
-
-            <label>Doctor:</label>
-            <select id="doctor">
-                <option>Dr. Ravi</option>
-                <option>Dr. Sneha</option>
-                <option>Dr. Kumar</option>
-            </select>
-
-            <label>Date:</label>
-            <input type="date" id="date">
-
-            <label>Time Slot:</label>
-            <select id="time">
-                <option>Morning (9AM - 12PM)</option>
-                <option>Afternoon (1PM - 4PM)</option>
-                <option>Evening (5PM - 8PM)</option>
-            </select>
-
-            <button onclick="book()">Book</button>
-            <p id="msg"></p>
+        <div class="doctor-card">
+            <h3>👩‍⚕️ Dr. Sneha</h3>
+            <p>Dermatologist 🌿</p>
         </div>
+
+        <div class="doctor-card">
+            <h3>👨‍⚕️ Dr. Kumar</h3>
+            <p>General Physician 🩺</p>
+        </div>
+
     </div>
+</div>
+
+<!-- APPOINTMENT -->
+<div id="appointment">
+    <div class="card">
+        <h2>Book Appointment</h2>
+
+        <label>Doctor:</label>
+        <select id="doctor">
+            <option>Dr. Ravi</option>
+            <option>Dr. Sneha</option>
+            <option>Dr. Kumar</option>
+        </select>
+
+        <label>Date:</label>
+        <input type="date" id="date">
+
+        <label>Time Slot:</label>
+        <select id="time">
+            <option>Morning (9AM - 12PM)</option>
+            <option>Afternoon (1PM - 4PM)</option>
+            <option>Evening (5PM - 8PM)</option>
+        </select>
+
+        <button onclick="book()">Book Appointment</button>
+        <p id="msg"></p>
+    </div>
+</div>
 
 </div>
 
