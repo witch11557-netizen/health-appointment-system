@@ -110,6 +110,15 @@
             <h3>Your Appointments</h3>
             <ul id="appointmentsList"></ul>
         </div>
+        <div class="card">
+    <h3>📍 Nearest Hospital Finder</h3>
+    <button onclick="findHospital()">Find Nearby Hospital</button>
+    <p id="hospitalResult"></p>
+</div>
+        <div class="card">
+    <h3>⭐ Recommended Hospital</h3>
+    <p>Apollo Hospital - Best Rated & Nearest</p>
+</div>
     </div>
 
     <!-- DOCTORS -->
@@ -120,16 +129,19 @@
             <div class="card">
                 <h3>👨‍⚕️ Dr. Ravi</h3>
                 <p>Specialization: Cardiologist</p>
+                <p>Status: 🟢 Available</p>
             </div>
 
             <div class="card">
                 <h3>👩‍⚕️ Dr. Sneha</h3>
                 <p>Specialization: Dermatologist</p>
+                <p>Status: 🟢 Available</p>
             </div>
 
             <div class="card">
                 <h3>👨‍⚕️ Dr. Kumar</h3>
                 <p>Specialization: General Physician</p>
+                <p>Status: 🔴 Busy</p>
             </div>
 
         </div>
@@ -231,6 +243,10 @@ function loadAppointments() {
     });
 }
 
+    function findHospital() {
+    document.getElementById("hospitalResult").innerHTML =
+    "🏥 Apollo Hospital - 2.5 km away <br> 🏥 Yashoda Hospital - 4 km away";
+}
 </script>
 
 </body>
