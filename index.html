@@ -226,18 +226,36 @@ function book() {
     let date = document.getElementById("date").value;
     let time = document.getElementById("time").value;
 
-    if(date === "") {
-        document.getElementById("msg").innerText = "Select date!";
+    // check empty date
+    if (date === "") {
+        document.getElementById("msg").innerText = "❌ Select date!";
         return;
     }
 
+    // today date
+    let today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    // selected date
+    let selectedDate = new Date(date);
+
+    // block past date
+    if (selectedDate < today) {
+        document.getElementById("msg").innerText =
+        "❌ Invalid date! You cannot book past dates.";
+        return;
+    }
+
+    // save appointment
     let appointment = doctor + " on " + date + " (" + time + ")";
 
     let data = JSON.parse(localStorage.getItem(currentUser)) || [];
     data.push(appointment);
     localStorage.setItem(currentUser, JSON.stringify(data));
 
-    document.getElementById("msg").innerText = "Appointment booked!";
+    document.getElementById("msg").innerText =
+    "✅ Appointment booked successfully!";
+
     loadAppointments();
 }
 
@@ -257,7 +275,10 @@ function loadAppointments() {
   function findHospital() {
     document.getElementById("hospitalResult").innerHTML =
     "🏥 Apollo Hospital - 2.5 km away <br> 🏥 Yashoda Hospital - 4 km away";
-}  
+} 
+    document.getElementById("date").min =
+new Date().toISOString().split("T")[0];
+    
 </script>
 
 </body>
